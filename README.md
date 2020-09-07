@@ -1,2 +1,2 @@
-# test
+# testing
 ![sea](./sea.png)
