@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# testing
-![sea](./sea.png)
-=======
+
 
 # test
 ![sea](./sea.png)
