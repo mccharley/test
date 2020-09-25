@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: Bug Report
     about: Create a report of the issue you've encountered.
-    url: https://github.com/OKiMaureen/test/issues/new?template=bug_report.md&projects=OkiMaureen%2Ftest%2F1
+    url: https://github.com/OKiMaureen/test/issues/new?template=bug_report.md&permalinks
