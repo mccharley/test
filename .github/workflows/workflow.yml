@@ -14,7 +14,11 @@ on:
 jobs:
   say_hello:
     runs-on: ubuntu-latest
+    env:
+      TEST: "Hello\nWorld!"
     steps:
     - run: |
        echo "name: ${{ github.event.inputs.name }}" 
+       echo -e $TEST
+    
         
