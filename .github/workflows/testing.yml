@@ -3,10 +3,16 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say simple hello
     steps:
-      - name: Checkout private tools
+      - name: custom action
         uses: actions/checkout@v2
         with:
-         repository: OKiMaureen/test
-         path: .github/actions/test_action
+          repository: okimaureen/test_avtion
+          ref: v1
+          path: .github/actions/test_avtion
+      - name: Run custom action 
+        uses: ./.github/actions/test_avtion
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
