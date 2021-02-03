@@ -5,10 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say simple hello
     steps:
-    - uses: actions/checkout@v2
-    - id: foo
-      uses: manulife-ets-sandbox/test_action@v1
-      with:
-        who-to-greet: 'Mona the Octocat'
-    - run: echo random-number ${{ steps.foo.outputs.random-number }}
-      shell: bash
+      - name: Checkout private tools
+        uses: actions/checkout@v2
+        with:
+         repository: OKiMaureen/test
+         token: ${{ secrets.GitHub_PAT }} # `GitHub_PAT` is a secret that contains your PAT
+         path: best
