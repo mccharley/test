@@ -11,7 +11,7 @@ jobs:
           ref: v1
           path: .github/actions/test_avtion
       - name: Run custom action 
-        uses: okimaureen/test/.github/actions/test_avtion@master
+        uses: ./.github/actions/test_avtion
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
