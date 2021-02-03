@@ -10,6 +10,8 @@ jobs:
           repository: okimaureen/test_avtion
           ref: v1
           path: .github/actions/test_avtion
+      - name: Run checkout action
+        uses: actions/checkout@v2
       - name: Run custom action 
         uses: ./.github/actions/test_avtion
         with:
