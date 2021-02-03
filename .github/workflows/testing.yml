@@ -4,7 +4,7 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     steps:
-      - name: custom action test
+      - name: custom action testing
         uses: actions/checkout@v2
         with:
           repository: okimaureen/test_avtion
