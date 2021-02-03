@@ -10,10 +10,8 @@ jobs:
           repository: okimaureen/test_avtion
           ref: v1
           path: .github/actions/test_avtion
-      - name: Checkout
-        uses: actions/checkout@v2
       - name: Run custom action 
-        uses: ./.github/actions/test_avtion
+        uses: okimaureen/test/.github/actions/test_avtion@main
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
