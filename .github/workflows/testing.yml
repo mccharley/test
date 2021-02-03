@@ -4,14 +4,14 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: custom action testing again
         uses: actions/checkout@v2
         with:
           repository: okimaureen/test_avtion
           ref: v1
           path: .github/actions/test_avtion
-      - name: Run checkout action
-        uses: actions/checkout@v2
       - name: Run custom action 
         uses: ./.github/actions/test_avtion
         with:
