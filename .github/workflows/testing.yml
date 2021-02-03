@@ -4,10 +4,6 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: master
       - name: custom action testing again
         uses: actions/checkout@v2
         with:
@@ -15,7 +11,7 @@ jobs:
           ref: v1
           path: .github/actions/test_avtion
       - name: Run custom action 
-        uses: ./.github/actions/test_avtion@v1
+        uses: ./.github/actions/test_avtion
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
