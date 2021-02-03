@@ -9,5 +9,4 @@ jobs:
         uses: actions/checkout@v2
         with:
          repository: OKiMaureen/test
-         token: ${{ secrets.GitHub_PAT }} # `GitHub_PAT` is a secret that contains your PAT
          path: best
