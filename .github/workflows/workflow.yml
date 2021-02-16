@@ -15,10 +15,10 @@ jobs:
   say_hello:
     runs-on: ubuntu-latest
     env:
-      TESTING: "Hello\nWorld!"
+      TESTER: "Hello\nWorld!"
     steps:
     - run: |
        echo "name: ${{ github.event.inputs.name }}" 
-       echo -e $TESTING
+       echo -e $TESTER
     
         
