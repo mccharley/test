@@ -7,11 +7,11 @@ jobs:
       - name: custom action testing again
         uses: actions/checkout@v2
       - name: Run custom action 
-        uses:  okimaureen/test_avtion/acion1@main
+        uses:  okimaureen/test_avtion/action1@main
         with:
           who-to-greet: 'Mona the Octocat'
       - name: Run custom action2 
-        uses:  okimaureen/test_avtion/acion2@main
+        uses:  okimaureen/test_avtion/action2@main
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
