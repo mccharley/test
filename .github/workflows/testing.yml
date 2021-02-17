@@ -6,16 +6,12 @@ jobs:
     steps:
       - name: custom action testing again
         uses: actions/checkout@v2
-        with:
-          repository: okimaureen/test_avtion
-          ref: v1
-          path: .github/actions/test_avtion
       - name: Run custom action 
         uses:  okimaureen/test_avtion/acion@main
         with:
           who-to-greet: 'Mona the Octocat'
       - name: Run custom action2 
-        uses:  okimaureen/test_avtion/acio2n@main
+        uses:  okimaureen/test_avtion/acion2@main
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
