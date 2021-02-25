@@ -20,7 +20,7 @@ jobs:
       TESTER: "Hello\nWorld!"
     steps:
     - run: |
-       echo "name: ${{ github.event.inputs.name }}" 
+       echo "name: ${{ github.event.pull_request }}" 
        echo -e $TESTER
     
         
