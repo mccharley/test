@@ -1,0 +1,19 @@
+name: test deployment two
+
+on:
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    environment:
+      name: staging
+      url: ${{ steps.deploy.outputs.webapp-url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub deployment
+        uses: chrnorm/deployment-action@releases/v1
+        id: deployment
+        with:
+          token: ${{ github.token  }}
+          environment: staging
+          ref: ${{ github.sha }}
