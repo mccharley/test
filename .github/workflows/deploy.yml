@@ -7,8 +7,16 @@ jobs:
   build:
     environment:
       name: staging
-      url: https://github.com
+      url: ${{ steps.deploy.outputs.webapp-url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
+      - name: Pre deploy
+        run: |
+          echo "PRE DEPLOY"
+      - name: Deploy
+        id: deploy
+        run: |
+          echo "DEPLOY"
+          echo "::set-output name=webapp-url::https://google.com"
+      - name: Post deploy
         run: echo Hello, world!
