@@ -14,4 +14,4 @@ jobs:
           token: ${{ github.token  }}
           environment: staging
           target_url: https://github.com
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
