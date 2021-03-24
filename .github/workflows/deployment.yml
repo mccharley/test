@@ -5,9 +5,6 @@ on:
     branches: [ master ]
 jobs:
   build:
-    environment:
-      name: staging
-      url: ${{ steps.deploy.outputs.webapp-url }}
     runs-on: ubuntu-latest
     steps:
       - name: Create GitHub deployment
@@ -16,5 +13,5 @@ jobs:
         with:
           token: ${{ github.token  }}
           environment: staging
-          target_url: http://my-app-url.com
+          target_url: https://
           ref: ${{ github.sha }}
