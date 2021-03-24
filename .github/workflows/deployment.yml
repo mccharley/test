@@ -15,5 +15,5 @@ jobs:
         id: deployment
         with:
           token: ${{ github.token  }}
-          environment: staging
+          environment: https://github.com
           ref: ${{ github.sha }}
