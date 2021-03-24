@@ -17,6 +17,6 @@ jobs:
         id: deploy
         run: |
           echo "DEPLOY"
-          echo "::set-output name=webapp-url::https://github.com"
+          echo "::set-output name=webapp-url::https://google.com"
       - name: Post deploy
         run: echo Hello, world!
