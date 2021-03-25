@@ -14,5 +14,5 @@ jobs:
         uses:  okimaureen/test_avtion/action2@main
         with:
           who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+      - run: echo $GIHUB_ACTOR
         shell: bash
