@@ -1,17 +1,22 @@
-name: test deployment two
+name: test deployment
 
 on:
   pull_request:
     branches: [ master ]
 jobs:
   build:
+    environment:
+      name: staging
+      url: ${{ steps.deploy.outputs.webapp-url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Create GitHub deployment
-        uses: chrnorm/deployment-action@releases/v1
-        id: deployment
-        with:
-          token: ${{ github.token  }}
-          environment: staging
-          target_url: https://github.com
-          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Pre deploy
+        run: |
+          echo "PRE DEPLOY"
+      - name: Deploy
+        id: deploy
+        run: |
+          echo "DEPLOY"
+          echo "::set-output name=webapp-url::https://github.com"
+      - name: Post deploy
+        run: echo Hello, world!
