@@ -10,7 +10,7 @@ updates:
 
 updates:
   # Configuration for Dockerfile
-  - package-ecosystem: "npm"
+  - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
       interval: "daily"
