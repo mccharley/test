@@ -18,3 +18,4 @@ jobs:
           token: "${{ github.token }}"
           target_url: https://github.com
           environment: dev
+          ref: "v2.7.0"
