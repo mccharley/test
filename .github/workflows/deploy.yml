@@ -1,0 +1,21 @@
+name: test deployment
+
+on: [push]
+
+jobs:
+  build:
+    environment:
+      name: development
+      url: ${{ steps.deploy.outputs.webapp-url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pre deploy
+        run: |
+          echo "PRE DEPLOY"
+      - name: Deploy
+        id: deploy
+        run: |
+          echo "DEPLOY"
+          echo "::set-output name=webapp-url::https://github.com"
+      - name: Post deploy
+        run: echo Hello, world!
