@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: custom action testing again
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
       - name: Run custom action 
         uses:  okimaureen/test_avtion/action1@main
         with:
