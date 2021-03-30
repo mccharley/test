@@ -33,6 +33,6 @@ jobs:
           target_url: https://github.com
           environment: dev
 
-          ref: "2.7.2"
+          ref: "v2.7.1"
 
 
