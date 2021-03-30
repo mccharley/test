@@ -8,5 +8,5 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-       time: "12:30"
+       time: "12:20"
        timezone:: "Africa/Lagos"
