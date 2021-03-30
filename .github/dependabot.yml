@@ -1,12 +1,18 @@
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
+  # Configuration for Dockerfile
+  - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
-  - package-ecosystem: "github-actions"
+      time: "12:20"
+      timezone:: "Africa/Lagos"
+
+
+  # Configuration for npm
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-       time: "12:20"
-       timezone:: "Africa/Lagos"
+      time: "12:20"
+      timezone:: "Africa/Lagos"
