@@ -5,16 +5,15 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "14:55"
+      time: "15:05"
       timezone: "Africa/Lagos"
 
-version: 2
 updates:
   # Configuration for Dockerfile
-  - package-ecosystem: "github-actions"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-      time: "15:00"
+      time: "15:05"
       timezone: "Africa/Lagos"
 
