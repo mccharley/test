@@ -1,6 +1,9 @@
 name: test deployment
 
-on: [push]
+on:
+  push:
+    tags:        
+      - v2.7.0
 
 jobs:
   build:
