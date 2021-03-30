@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "daily"
       time: "12:20"
-      timezone:: "Africa/Lagos"
+      timezone: "Africa/Lagos"
 
 
   # Configuration for npm
@@ -15,4 +15,4 @@ updates:
     schedule:
       interval: "daily"
       time: "12:20"
-      timezone:: "Africa/Lagos"
+      timezone: "Africa/Lagos"
