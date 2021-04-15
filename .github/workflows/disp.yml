@@ -5,7 +5,7 @@ on:
       name:
         description: 'Person to greet'
         required: true
-        default: 'Mona the Octocat'
+        default: 'Mona the Octopus'
       home:
         description: 'location'
         required: false
