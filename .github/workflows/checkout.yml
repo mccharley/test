@@ -2,7 +2,7 @@ name: Merge Prod -> master
 
 on:
   push:
-    branches: [ prod ]
+    branches: [ confirm ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Merge prod->master ff_only
+      - name: Merge confirm->master ff_only
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
