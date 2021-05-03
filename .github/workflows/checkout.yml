@@ -1,4 +1,4 @@
-name: fff-test -> master
+name: ffz-test -> master
 
 on: push
   
@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Merge fff-test->master ff_only
+      - name: Merge ffz-test->master ff_only
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -19,5 +19,5 @@ jobs:
           git fetch origin fff-test
           git checkout master
           git pull --rebase
-          git merge fff-test --ff-only --allow-unrelated-histories
+          git merge ffz-test --ff-only --allow-unrelated-histories
           git push origin master
