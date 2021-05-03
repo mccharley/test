@@ -1,9 +1,7 @@
 name: Confirm -> master
 
-on:
-  push:
-    branches:
-      - confirm
+on: push
+  
 jobs:
   build:
     runs-on: ubuntu-latest
