@@ -1,4 +1,4 @@
-name: Confirm -> master
+name: fff-test -> master
 
 on: push
   
@@ -16,8 +16,8 @@ jobs:
           git config user.name "test"
           git config user.email "test@test.com"
           git fetch origin master
-          git fetch origin confirm
+          git fetch origin fff-test
           git checkout master
           git pull --rebase
-          git merge confirm --ff-only --allow-unrelated-histories
+          git merge fff-test --ff-only --allow-unrelated-histories
           git push origin master
