@@ -16,7 +16,7 @@ jobs:
           git config user.name "test"
           git config user.email "test@test.com"
           git fetch origin master
-          git fetch origin fff-test
+          git fetch origin fg-test
           git checkout master
           git pull --rebase
           git merge fg-test --ff-only --allow-unrelated-histories
