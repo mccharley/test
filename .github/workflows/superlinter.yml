@@ -21,5 +21,18 @@ jobs:
       - name: Run Super-Linter
         uses: github/super-linter@v3
         env:
+          VALIDATE_ALL_CODEBASE: false 
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Runs the Super-Linter action
+      - name: Run simple echo
+        run: |
+          n=0
+          until [ "$n" -ge 5 ]
+          do
+            echo "random-number"
+            n=$((n+1)) 
+            sleep 5
+          done
+
