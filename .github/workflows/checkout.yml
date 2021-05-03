@@ -1,4 +1,4 @@
-name: Merge Prod -> master
+name: Confirm -> master
 
 on:
   push:
