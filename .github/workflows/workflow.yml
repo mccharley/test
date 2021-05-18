@@ -20,8 +20,6 @@ jobs:
       TESTER: "Hello\nWorld!"
     steps:
       - run: |
-         echo "name: ${{ github.event.pull_request[synchronize] }}" 
-         echo "name: ${{ github.event.pull_request[opened] }}" 
          echo -e $TESTER
     
         
