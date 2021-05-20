@@ -10,7 +10,7 @@ on:
      - 'master'
 #     paths:
 #      - '!.github/workflows/deploy-prod.yml'
-    paths-ignore:
+    paths:
       - '.github/workflows/deploy-prod.yml'
   pull_request:
     branches: [ main ]
