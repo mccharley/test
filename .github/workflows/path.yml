@@ -11,8 +11,8 @@ on:
 #     paths:
 #      - '!.github/workflows/deploy-prod.yml'
     paths:
-      - '.github/**'
-      - '!.github/workflows/**'
+      - '.github/wirkflows/**'
+      - '!.github/workflows/testing.yml'
   pull_request:
     branches: [ main ]
 
