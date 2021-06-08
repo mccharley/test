@@ -5,7 +5,7 @@ on:
     paths:
      - '.github/workflows/**'
     branches:
-      - auto-merge
+      - server
   workflow_dispatch:
   
 
