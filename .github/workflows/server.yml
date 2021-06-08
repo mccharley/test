@@ -7,8 +7,7 @@ on:
     branches:
       - auto-merge
   workflow_dispatch:
-    branches:
-      - auto-merge
+  
 
 jobs:
    Explore-GitHub-Actions:
