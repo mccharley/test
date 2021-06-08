@@ -3,7 +3,7 @@ name: Submit Cloud Build and deploy endpoints
 on:
   push:
     paths:
-      - 'newer/**'
+     - '.github/workflows/**'
     branches:
       - auto-merge
   workflow_dispatch:
