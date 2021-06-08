@@ -5,10 +5,10 @@ on:
     paths:
       - newer/**
     branches:
-      - compare
+      - auto-merge
   workflow_dispatch:
     branches:
-      - compare
+      - auto-merge
 
 jobs:
    Explore-GitHub-Actions:
