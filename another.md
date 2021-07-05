@@ -1,4 +1,4 @@
-name: Manual
+name: Updated Manual
 on:
    workflow_dispatch:
     inputs:
