@@ -12,6 +12,9 @@ jobs:
    Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions-rs/cargo@v1
+        with:
+          command: check
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "hello ${{ toJson(github) }}"
       - run: echo "🎉 The job was automatically triggered by event ${{ github.event.push.push_id}} event."
