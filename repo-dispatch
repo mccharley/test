@@ -1,0 +1,19 @@
+name: test
+on:
+  repository_dispatch:
+    types: [deploy]
+jobs:
+  cicd:
+    env:
+      ENV1: ${{ github.event.client_payload.x.val1 }}
+      ENV2: ${{ github.event.client_payload.x.val2 }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: One
+        run: |
+          echo "hello world from One!"
+      - name: Two
+        run: |
+          echo "hello world from Two!"
