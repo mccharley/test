@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print AWS
-        run: echo"AWS:${{ env.AWS }}"
+        run: echo "AWS:${{ env.AWS }}"
