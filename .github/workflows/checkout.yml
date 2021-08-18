@@ -1,4 +1,4 @@
-name: Confirm -> master
+name: fm-test -> master
 
 on: push
   
@@ -7,17 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
 
-      - name: Merge confirm->master ff_only
+      - name: Merge fm-test->master ff_only
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          df -h
           git config user.name "test"
           git config user.email "test@test.com"
           git fetch origin master
-          git fetch origin confirm
+          git fetch origin fm-test
           git checkout master
           git pull --rebase
-          git merge confirm --ff-only --allow-unrelated-histories
+          git merge fm-test --ff-only --allow-unrelated-histories
           git push origin master

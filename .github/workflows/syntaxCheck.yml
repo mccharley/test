@@ -1,0 +1,12 @@
+on:
+  workflow_dispatch:
+
+env:
+  AWS: 123456
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print AWS
+        run: echo "AWS:${{ env.AWS }}"
