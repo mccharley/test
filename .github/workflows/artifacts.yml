@@ -8,13 +8,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - run: mkdir -p test
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
           name: dist-without-markdown
-          path: |
-            dist
-            !dist/**/*.md
+          path: test/cargo.toml
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
         with:
