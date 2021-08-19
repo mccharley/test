@@ -8,7 +8,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - run: mkdir -p test
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
