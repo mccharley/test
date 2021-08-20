@@ -8,7 +8,7 @@ jobs:
       - name: Sleep
         run: sleep 1m
   required-for-merge:
-    name: "test"
+    name: "ptest"
     runs-on: ubuntu-latest
     needs: [ bar ]
     steps:
