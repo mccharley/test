@@ -1,26 +1,16 @@
-name: WorkflowA
-
-# Run this workflow every time a new commit pushed to your repository
-on: push
-
+name: Workflow A
+on: [push]
 jobs:
-  # Set the job key. The key is displayed as the job name
-  # when a job name is not provided
-  test:
-    # Name the Job
-    name: test
-    # Set the type of machine to run on
+  bar:
+    name: "Bar"
     runs-on: ubuntu-latest
-
     steps:
-      # Checks out a copy of your repository on the ubuntu-latest machine
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Runs the Super-Linter action
-      - name: Run Super-Linter
-        uses: github/super-linter@v3
-        env:
-          VALIDATE_ALL_CODEBASE: false 
-          DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sleep
+        run: sleep 1m
+  required-for-merge:
+    name: "test"
+    runs-on: ubuntu-latest
+    needs: [ bar ]
+    steps:
+      - name: Succeed
+        run: true
