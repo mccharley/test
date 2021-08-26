@@ -1,0 +1,25 @@
+name: Testing
+
+Controls when the workflow will run
+on:
+workflow_dispatch:
+
+A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+This workflow contains a single job called "build"
+test:
+# The type of runner that the job will run on
+runs-on: windows-latest
+environment: "Production"
+
+# Steps represent a sequence of tasks that will be executed as part of the job
+steps:
+  - name: Set the value
+    id: step_one
+    run: |
+      echo "action_state=yellow" >> $GITHUB_ENV
+  - name: Use the value
+    id: step_two
+    run: |
+      echo "${{ env.action_state }}" # This will output 'yellow'`
