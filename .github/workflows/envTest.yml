@@ -13,4 +13,4 @@ jobs:
       id: step_two
       run: |
          echo "${{ env.action_state }}" 
-         echo "$env:action_state
+         echo $env:action_state
