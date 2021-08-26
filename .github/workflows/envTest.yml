@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
  test:
-   runs-on: windows-latest
+   runs-on: windows-2022
    steps:
     - name: Set the value
       id: step_one
