@@ -3,7 +3,7 @@ on: workflow_dispatch
 
 jobs:
  test:
-   runs-on: windows-2022
+   runs-on: windows-latest
    steps:
     - name: Set the value
       id: step_one
@@ -12,4 +12,5 @@ jobs:
     - name: Use the value
       id: step_two
       run: |
-         echo "${{ env.action_state }}" #This will output 'yellow'
+         echo "${{ env.action_state }}" 
+         echo "$env:action_state
