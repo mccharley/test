@@ -1,4 +1,4 @@
-name: Manual
+name: Manually triggered workflow test
 on:
    workflow_dispatch:
     inputs:
@@ -14,9 +14,6 @@ on:
 jobs:
   say_hello:
     runs-on: ubuntu-latest
-    env:
-      TESTER: "Hello\nWorld!"
     steps:
     - run: |
        echo "name: ${{ github.event.inputs.name }}" 
-       echo -e $TESTER

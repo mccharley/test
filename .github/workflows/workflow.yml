@@ -1,7 +1,8 @@
 name: Manually triggered workflow 2
 on:
-   pull_request:
+   pull_request_target:
     branches: [ master ]
+    types: [closed, opened, synchronize, reopened]
    workflow_dispatch:
     inputs:
       name:
@@ -19,8 +20,8 @@ jobs:
     env:
       TESTER: "Hello\nWorld!"
     steps:
-    - run: |
-       echo "name: ${{ github.event.pull_request }}" 
-       echo -e $TESTER
+      - run: |
+         echo -e $TESTER
+         echo "Hello ${{ github.event.inputs.name }}!"
     
         
