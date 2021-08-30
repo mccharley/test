@@ -7,7 +7,7 @@ on:
     workflows:
       - CIPath
     branches:
-      - compare
+      - workRun
     types:
       - completed
 
