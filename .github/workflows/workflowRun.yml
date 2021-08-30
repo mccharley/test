@@ -5,7 +5,7 @@ name: WorkflowrunTest
 on:
   workflow_run:
     workflows:
-      - WorkflowPath
+      - CIPath
     branches:
       - compare
     types:
