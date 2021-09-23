@@ -1,0 +1,15 @@
+name: Testing
+on: workflow_dispatch
+
+jobs:
+ test:
+   runs-on: macos-latest
+   steps:
+    - name: Set the value
+      id: step_one
+      run: |
+        echo "action_state=red" >> $GITHUB_ENV
+    - name: Use the value
+      id: step_two
+      run: |
+         echo "${{ env.action_state }}"

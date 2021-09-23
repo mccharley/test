@@ -1,0 +1,27 @@
+name: Manually triggered workflow 2
+on:
+   pull_request_target:
+    branches: [ master ]
+    types: [closed, opened, synchronize, reopened]
+   workflow_dispatch:
+    inputs:
+      name:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+        default: 'The Octoverse'
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    env:
+      TESTER: "Hello\nWorld!"
+    steps:
+      - run: |
+         echo -e $TESTER
+         echo "Hello ${{ github.event.inputs.name }}!"
+    
+        

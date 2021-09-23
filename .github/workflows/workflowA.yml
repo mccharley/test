@@ -1,0 +1,16 @@
+name: Workflow A
+on: [push]
+jobs:
+  bar:
+    name: "Bar"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep
+        run: sleep 1m
+  required-for-merge:
+    name: "ptest"
+    runs-on: ubuntu-latest
+    needs: [ bar ]
+    steps:
+      - name: Succeed
+        run: true
