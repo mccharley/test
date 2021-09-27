@@ -11,7 +11,7 @@ jobs:
 
       - name: Merge fm-test->master ff_only
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CODE_SECRET }}
         run: |
           df -h
           git config user.name "test"
