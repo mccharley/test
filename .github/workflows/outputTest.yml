@@ -1,0 +1,14 @@
+name: Test bug
+on:
+  workflow_dispatch:
+jobs:
+  test_bug:
+    runs-on: ubuntu-latest
+    steps:
+      - id: calc_results
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: core.setOutput("result", "result")
+      - id: debug
+        run: echo  "${{ steps.calc_results.outputs.result }}
