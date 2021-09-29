@@ -9,6 +9,6 @@ jobs:
         uses: actions/github-script@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: core.setOutput("results", "result")
+          script: core.setOutput( "results", "result")
       - id: debug
         run: echo  "${{ steps.calc_results.outputs.results }}
