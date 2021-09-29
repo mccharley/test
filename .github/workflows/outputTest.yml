@@ -5,6 +5,8 @@ jobs:
   test_bug:
     runs-on: ubuntu-latest
     steps:
+      - id: testing
+        run: echo "::set-output name=result::resulting"
       - id: calc_results
         uses: actions/github-script@v3
         with:
@@ -12,3 +14,5 @@ jobs:
           script: core.setOutput( "results", "result")
       - id: debug
         run: echo  "${{ steps.calc_results.outputs.results }}
+      - id: resul
+        run: echo  "${{ steps.testing.outputs.result }}
