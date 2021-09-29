@@ -13,6 +13,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: core.setOutput( "results", "result")
       - id: debug
-        run: echo  "${{ steps.calc_results.outputs.results }}
+        run: echo  "${{ steps.calc_results.outputs.results }}"
       - id: resul
-        run: echo  "${{ steps.testing.outputs.result }}
+        run: echo  "${{ steps.testing.outputs.result }}"
