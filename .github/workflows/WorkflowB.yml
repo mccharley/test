@@ -2,7 +2,6 @@ name: WorkflowB
 on: [push]
 jobs:
   foo:
-    name: "Foo"
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
@@ -10,7 +9,7 @@ jobs:
   required-for-merge:
     name: "ptest"
     runs-on: ubuntu-latest
-    needs: [ foo ]
+    needs:  foo  
     steps:
       - name: Fail
         run: false
