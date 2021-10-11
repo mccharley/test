@@ -17,6 +17,14 @@ jobs:
     name: Manifest
     runs-on: ubuntu-latest
     steps:
+      - name: Validate manifest
+        uses: LabyMod/server-media/.github/workflows/validate-manifest@master
+        env:
+          PR_ID: ${{ github.event.pull_request.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          COMMIT_URL: ${{ github.event.pull_request.head.repo.commits_url }}
+          PR_ACTION: ${{ github.event.action }}
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -29,11 +37,4 @@ jobs:
       - name: Add json
         run:
           cp ${HOME}/files.json ./
-      - name: Validate manifest
-        uses: LabyMod/server-media/.github/workflows/validate-manifest@master
-        env:
-          PR_ID: ${{ github.event.pull_request.number }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
-          COMMIT_URL: ${{ github.event.pull_request.head.repo.commits_url }}
-          PR_ACTION: ${{ github.event.action }}
+      
