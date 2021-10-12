@@ -12,8 +12,10 @@ jobs:
       - name: Merge fm-test->master ff_only
         env:
           GITHUB_TOKEN: ${{ secrets.CODE_SECRET }}
+          NOTMASKEd: hello
         run: |
-          echo "${{ env.GITHUB_TOKEN }}"
+          echo "${ GITHUB_TOKEN }"
+          echo "${ NOTMASKEd }"
           df -h
           git config user.name "test"
           git config user.email "test@test.com"
