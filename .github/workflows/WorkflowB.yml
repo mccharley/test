@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Fail
         env:
-          DAY_OF_WEEK: "hellonmm"
+          DAY_OF_WEEK: "ghp_Cqy5ZS8BS9MwKwyn6y0oYKXeFtEUhw1av9Sju"
         run: echo "${DAY_OF_WEEK}"
        
           
