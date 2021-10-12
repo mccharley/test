@@ -14,7 +14,7 @@ jobs:
       - name: Fail
         run: echo "Hello world"
         env:
-          DAY_OF_WEEK: 'hello'
+          DAY_OF_WEEK: "hellonmm"
 
       - name: Install packages
         run: |
