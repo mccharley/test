@@ -12,10 +12,8 @@ jobs:
     needs:   foo  
     steps:
       - name: Fail
-        run: echo "Hello world"
         env:
           DAY_OF_WEEK: "hellonmm"
-
-      - name: Install packages
-        run: |
-         echo "${{ env.DAY_OF_WEEK }}"
+        run: echo "${DAY_OF_WEEK}"
+       
+          
