@@ -13,3 +13,9 @@ jobs:
     steps:
       - name: Fail
         run: echo "Hello world"
+        env:
+          DAY_OF_WEEK: 'hello'
+
+      - name: Install packages
+        run: |
+         echo "${{ env.DAY_OF_WEEK }}"
