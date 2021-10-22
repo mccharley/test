@@ -1,8 +1,10 @@
-on: 
+on:
   pull_request:
-    types: [opened, reopened, synchronize]
     branches:
       - master
+    paths:
+      - '.github/workflows/repo_action.yml'
+    types: [opened, synchronize, closed]
   workflow_dispatch:
     
 jobs:
