@@ -18,8 +18,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           label: 'review-app'
           type: remove
-   
-      - uses: ./.github/actions
+      - name: Run local ritual
+        if: ${{ success() }}
+        uses: ./.github/actions/action.yml
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
