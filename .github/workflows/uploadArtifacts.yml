@@ -20,5 +20,5 @@ jobs:
         uses: GarnetOS/action-download-artifact@new
         with:
           workflow: uploadArtifacts.yml
-          name: out-artifact
+          name: my-artifact
      
