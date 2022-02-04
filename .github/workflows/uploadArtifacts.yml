@@ -15,3 +15,10 @@ jobs:
         with:
           name: my-artifact
           path:  ${{ github.workspace }}
+         
+      - name: Download artifact
+        uses: GarnetOS/action-download-artifact@new
+        with:
+          workflow: 02.yml
+          name: out-artifact
+     
