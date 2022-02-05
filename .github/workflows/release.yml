@@ -8,6 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: version
+        run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
+        id: version
       
       - name: create release
         id: release
@@ -15,8 +18,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}.${{ github.run_id }}
-          release_name: Release ${{ github.run_id }} - ${{ github.ref }}
+          tag_name: ${{ github.ref }}
+          release_name: ${{ steps.version.outputs.version }}
           draft: false
           prerelease: false
      
