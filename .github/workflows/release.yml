@@ -24,7 +24,7 @@ jobs:
         id: upload_raw_release_asset
         uses: actions/upload-release-asset@v1.0.2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }} 
           asset_path: ./test
