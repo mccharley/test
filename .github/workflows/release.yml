@@ -11,15 +11,13 @@ jobs:
 
       - name: testing
         env:
-          GITHUB_TOKEN: ${{ secrets.CODE_SECRET }}
           NOTMASKEd: hello
         run: |
-          echo "${ GITHUB_TOKEN }"
           echo "${ NOTMASKEd }"
     
       - name: create release
-        id: run
-        uses:  actions/create-release@v1.1.4
+        id: release
+        uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
