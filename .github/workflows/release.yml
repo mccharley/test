@@ -8,13 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
-      - name: testing
-        env:
-          NOTMASKEd: hello
-        run: |
-          echo "${ NOTMASKEd }"
-    
+      
       - name: create release
         id: release
         uses: actions/create-release@v1.1.4
