@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }} 
-          asset_path: ./asset.raw
+          asset_path: ./
           asset_name: asset.raw
           asset_content_type: application/raw
 
