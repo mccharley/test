@@ -28,6 +28,6 @@ jobs:
         with:
           upload_url: ${{ steps.release.outputs.upload_url }} 
           asset_path: ./test
-          asset_name: asset.zip
-          asset_content_type: application/zip
+          asset_name: asset.raw
+          asset_content_type: application/raw
 
