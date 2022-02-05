@@ -18,7 +18,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}.${{ github.run_id }}
+          tag_name: ${{ steps.version.outputs.version }}
           release_name: Release-${{ github.ref }}-${{ github.run_id }}
           draft: false
           prerelease: false
@@ -27,7 +27,7 @@ jobs:
         id: upload_raw_release_asset
         uses: actions/upload-release-asset@v1.0.2
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }} 
           asset_path: ./test
