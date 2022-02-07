@@ -26,4 +26,13 @@ jobs:
         with:
           workflow: uploadArtifacts.yml
           name: my-artifacts
+          
+      - name: Prepare image
+        run: |
+            pwd
+            sudo ls
+            sudo apt install -y util-linux wget zip
+            sudo mkdir /mnt/lfs
+            sudo mount -o suid fileB.md /mnt/lfs
+            sudo ls 
      
