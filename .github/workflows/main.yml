@@ -3,4 +3,4 @@ jobs:
   local-action-testing:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./actions
+      - uses:  ./.github/actions/action.yml
