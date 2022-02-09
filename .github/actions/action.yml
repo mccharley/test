@@ -3,11 +3,11 @@ description: 'Greet someone'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
-    required: true
+    required: false
     default: 'World'
   env:  # id of input
     description: 'env test'
-    required: true
+    required: false
 outputs:
   random-number:
     description: "Random number"
