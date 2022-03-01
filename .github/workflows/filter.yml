@@ -1,7 +1,9 @@
 name: test filter
 on:
   push:
-    branches: [ 'master', '**/branch-**' ]
+    branches: 
+     - 'master'
+     - '**/branch-**'
   pull_request:
   
 jobs:
