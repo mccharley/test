@@ -1,6 +1,4 @@
-name: CI
-
-name: Build
+name: test filter
 on:
   push:
     branches: [ 'master', '**/branch-**' ]
