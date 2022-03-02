@@ -5,15 +5,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "15:05"
+      time: "17:00"
       timezone: "Africa/Lagos"
 
-updates:
-  # Configuration for Dockerfile
-  - package-ecosystem: "gitsubmodule"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "15:05"
-      timezone: "Africa/Lagos"
 
