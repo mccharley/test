@@ -11,7 +11,7 @@ jobs:
     permissions:
       actions: write
     steps:
-      - uses: actions/github-script@v5
+      - uses: actions/github-script@v6
         name: Trigger build
         with:
           script: |
