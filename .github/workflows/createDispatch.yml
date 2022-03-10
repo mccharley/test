@@ -18,7 +18,7 @@ jobs:
             params = {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'main'
+              ref: 'main',
               workflow_id: 'dispatchci.yml'
             }
             console.log(params)
