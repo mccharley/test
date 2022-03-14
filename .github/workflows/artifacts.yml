@@ -8,6 +8,10 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
+      - uses: fusion-engineering/setup-git-credentials@v2
+        with:
+          credentials: https://$username:${{ secrets.SNMIX_REPO_ACCESS_TOKEN }}@github.com/
+      - run: cat ~/.gitconfig
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Archive production artifacts
