@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latests
     steps:
       - uses: fusion-engineering/setup-git-credentials@v2
         with:
