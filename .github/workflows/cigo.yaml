@@ -1,0 +1,41 @@
+name: Go
+
+on:
+  pull_request:
+    branches: [ main ]
+    # paths:
+    #   - '!ui/'
+    #   - '!.vscode/'
+    #   - '!.gitignore'
+    #   - '!Makefile'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Set up Node.js ⚙️
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+
+    - name: Install Node.js dependencies
+      working-directory: ui/
+      run: |
+        npm install --global yarn 
+        npm install
+        yarn export
+#     - name: Build
+#       working-directory: ./
+#       run: go build -v ./...
+
+#     - name: Test
+#       working-directory: ./
+#       run: go test -v ./...
