@@ -1,6 +1,7 @@
 name: Manually triggered workflow (manual)
 on:
    workflow_dispatch:
+    branches: [releases]
     inputs:
       name:
         description: 'Person to greet'
