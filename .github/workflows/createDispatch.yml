@@ -1,6 +1,11 @@
 name: Set test status
 
+
+
 on:
+  issues:
+    types: [opened]
+
   workflow_dispatch:
   
 
