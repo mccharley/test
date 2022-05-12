@@ -50,3 +50,4 @@ jobs:
         shell: bash
         run: |
           echo "$CODECOMMIT_URL"
+          echo  secrets.CODECOMMIT_URL
