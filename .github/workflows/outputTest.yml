@@ -15,4 +15,4 @@ jobs:
       - id: debug
         run: echo  "${{ steps.calc_results.outputs.results }}"
       - id: resul
-        run: echo  "Test results will be streamed to [https://console.firebase.google.com/project/talent-mobile-dev/testlab/histories/bh.5ee76e0eb186519e/matrices/6899292010674379409]."
+        run: echo  "Test results will be streamed to [https://console.firebase.google.com/project/talent-mobile-dev/testlab/histories/bh.5ee76e0eb186519e/matrices/6899292010674379409]"
