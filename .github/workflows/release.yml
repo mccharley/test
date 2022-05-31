@@ -16,10 +16,10 @@ jobs:
         id: release
         uses: actions/create-release@v1.1.4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKENS }}
         with:
           tag_name: ${{ github.run_id }}
-          release_name: Release-${{ github.ref }}-${{ github.run_i }}
+          release_name: Release-${{ github.ref }}-${{ github.run_id }}
           draft: false
           prerelease: false
      
