@@ -87,8 +87,6 @@ jobs:
     name: "Terraform Apply"
     runs-on: ubuntu-latest
     environment: tf_apply
-    needs: [terraform-plan]
-    if: needs.terraform-plan.outputs.tf_plan_has_changes == 'true'
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       TF_VAR_pagerduty_api_key: ${{ secrets.PAGERDUTY_API_KEY }}
