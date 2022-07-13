@@ -1,0 +1,137 @@
+name: "Terraform Plan & Apply"
+
+on:
+  workflow_dispatch:
+  
+
+env:
+  tf_version: "1.1.7"
+  tg_version: "v0.36.6"
+  tf_working_dir: "terraform/"
+  AWS_ACCOUNT_ID: "984321978539"
+  SERVICE: tool-pagerduty
+  STAGE: dev
+  TF_VAR_pagerduty_account: juma-cloud
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  terraform-plan:
+    name: "Validate & Plan"
+    runs-on: ubuntu-latest
+    environment: tf_validate
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TF_VAR_pagerduty_api_key: ${{ secrets.PAGERDUTY_API_KEY }}
+      TF_VAR_pagerduty_api_key_ro: ${{ secrets.PAGERDUTY_API_KEY_RO }}
+      TF_VAR_pagerduty_user_api_key: ${{ secrets.PAGERDUTY_USER_API_KEY }}
+      TF_VAR_datadog_api_key: ${{ secrets.DATADOG_API_KEY }}
+      TF_VAR_datadog_app_key: ${{ secrets.DATADOG_APP_KEY }}
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "Configure AWS Credentials"
+        uses: aws-actions/configure-aws-credentials@05b148adc31e091bafbaf404f745055d4d3bc9d2
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.SERVICE }}-${{ env.STAGE }}-github-action
+
+      - name: "Terragrunt Init"
+        id: tf_init
+        uses: the-commons-project/terragrunt-github-actions@259fc9e56d89b4331cf23f6d3c4a1895cc754d2a
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_subcommand: "init"
+          tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
+
+      - name: "Terragrunt Validate"
+        id: tf_validate
+        uses: the-commons-project/terragrunt-github-actions@259fc9e56d89b4331cf23f6d3c4a1895cc754d2a
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_binary: "terraform"
+          tf_actions_subcommand: "validate"
+          tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
+
+      - name: "Terragrunt Plan"
+        id: tf_plan
+        uses: the-commons-project/terragrunt-github-actions@259fc9e56d89b4331cf23f6d3c4a1895cc754d2a
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_subcommand: "plan"
+          tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
+
+      - name: "Slack Notification"
+        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7
+        if: always()
+        env:
+          SLACK_ICON_EMOJI: ":pagerduty:"
+          SLACK_TITLE: "Stage: ${{ github.event.inputs.tf_stage }} Terraform Plan Status: ${{ job.status }}"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: ${{ env.SERVICE}}
+          SLACK_FOOTER: "Powered by ${{ env.SERVICE}}"
+
+    outputs:
+      tf_plan_has_changes: ${{ steps.tf_plan.outputs.tf_actions_plan_has_changes }}
+
+  terraform-apply:
+    name: "Terraform Apply"
+    runs-on: ubuntu-latest
+    environment: tf_apply
+    needs: [terraform-plan]
+    if: needs.terraform-plan.outputs.tf_plan_has_changes == 'true'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TF_VAR_pagerduty_api_key: ${{ secrets.PAGERDUTY_API_KEY }}
+      TF_VAR_pagerduty_api_key_ro: ${{ secrets.PAGERDUTY_API_KEY_RO }}
+      TF_VAR_pagerduty_user_api_key: ${{ secrets.PAGERDUTY_USER_API_KEY }}
+      TF_VAR_datadog_api_key: ${{ secrets.DATADOG_API_KEY }}
+      TF_VAR_datadog_app_key: ${{ secrets.DATADOG_APP_KEY }}
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "Configure AWS Credentials"
+        uses: aws-actions/configure-aws-credentials@05b148adc31e091bafbaf404f745055d4d3bc9d2
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.SERVICE }}-${{ env.STAGE }}-github-action
+
+      - name: "Terragrunt Init"
+        id: tf_init
+        uses: the-commons-project/terragrunt-github-actions@259fc9e56d89b4331cf23f6d3c4a1895cc754d2a
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_subcommand: "init"
+          tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
+
+      - name: "Terragrunt Apply"
+        id: tf_apply
+        uses: the-commons-project/terragrunt-github-actions@259fc9e56d89b4331cf23f6d3c4a1895cc754d2a
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tg_actions_version: ${{ env.tg_version }}
+          tf_actions_subcommand: "apply"
+          tf_actions_working_dir: ${{ env.tf_working_dir }}${{ github.event.inputs.tf_stage }}
+
+      - name: "Slack Notification"
+        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7
+        if: always()
+        env:
+          SLACK_ICON_EMOJI: ":pagerduty:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_TITLE: "Stage: ${{ github.event.inputs.tf_stage }} Terraform Apply Status: ${{ job.status }}"
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: ${{ env.SERVICE}}
+          SLACK_FOOTER: "Powered by ${{ env.SERVICE}}"
