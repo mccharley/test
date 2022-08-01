@@ -1,0 +1,36 @@
+name: release
+
+on: push
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: version
+        run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
+        id: version
+      
+      - name: create release
+        id: release
+        uses: actions/create-release@v1.1.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.run_id }}
+          release_name: Release-${{ github.ref }}-${{ github.run_id }}
+          draft: false
+          prerelease: false
+     
+      - name: Upload Raw Release Asset
+        id: upload_raw_release_asset
+        uses: actions/upload-release-asset@v1.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }} 
+          asset_path: ./test
+          asset_name: asset.raw
+          asset_content_type: application/raw
+

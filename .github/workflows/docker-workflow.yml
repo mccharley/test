@@ -1,4 +1,4 @@
-on: [push]
+on: [pull_request]
 
 jobs:
   hello_world_job:
@@ -6,7 +6,7 @@ jobs:
     name: A job to say hello
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Hello world action step
         id: hello
         uses: ./docker-action

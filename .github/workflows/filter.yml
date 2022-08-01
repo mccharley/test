@@ -1,0 +1,15 @@
+name: test filter
+on:
+  push:
+    branches: 
+     - 'master'
+     - '**branch-**'
+  pull_request:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run echo
+        run: echo "${{ github.event }}"

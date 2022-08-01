@@ -1,23 +1,26 @@
-on: 
+on:
   pull_request:
-    types: [opened, reopened, synchronize]
     branches:
       - master
+    paths:
+      - '.github/workflows/repo_action.yml'
+    types: [opened, synchronize, closed]
   workflow_dispatch:
     
 jobs:
   hola_world_job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: removelabel
         uses: buildsville/add-remove-label@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           label: 'review-app'
           type: remove
-   
-      - uses: ./.github/actions
+      - name: Run local ritual
+        if: ${{ success() }}
+        uses: ./.github/actions/action.yml
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}

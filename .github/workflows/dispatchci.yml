@@ -17,3 +17,17 @@ jobs:
     steps:
     - run: |
        echo "name: ${{ github.event.inputs.name }}" 
+       
+    - name: Archive production artifacts
+      id: tf_apply
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+      with:
+        name: my-artifact
+        path:  ${{ github.workspace }}
+        
+    - name: Archive development artifacts
+      id: tf_applys
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
+      with:
+        name: my-artifact
+        path:  ${{ github.workspace }}

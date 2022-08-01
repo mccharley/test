@@ -1,0 +1,18 @@
+name: Test bug
+on:
+  workflow_dispatch:
+jobs:
+  test_bug:
+    runs-on: ubuntu-latest
+    steps:
+      - id: testing
+        run: echo "::set-output name=result::result"
+      - id: calc_results
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: core.setOutput('result', 'result');
+      - id: debug
+        run: echo  "${{ steps.calc_results.outputs.results }}"
+      - id: resul
+        run: echo  "Test results will be streamed to [https://console.firebase.google.com/project/talent-mobile-dev/testlab/histories/bh.5ee76e0eb186519e/matrices/6899292010674379409]"

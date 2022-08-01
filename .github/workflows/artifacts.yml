@@ -8,11 +8,22 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
+      - uses: fusion-engineering/setup-git-credentials@v2
+        with:
+          credentials: https://$okimaureen:${{secrets.PAT }}@github.com/
+      - run: cat ~/.gitconfig
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: my-artifact
           path:  ${{ github.workspace }}
+      - name: run
+        id: run
+        uses: Codesee-io/codesee-map-action@latest
+        with:
+          api_token: ${{ secrets.CODESEE_ARCH_DIAG_API_TOKEN }}
+          github_ref: ${{ github.ref }}
+          support_typescript: true
     

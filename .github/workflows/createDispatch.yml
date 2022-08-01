@@ -1,0 +1,53 @@
+name: Set test status
+
+
+
+on:
+  issues:
+    types: [opened]
+
+  workflow_dispatch:
+  
+
+jobs:
+
+  trigger_build:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: actions/github-script@v6
+        name: Trigger build
+        with:
+          script: |
+            params = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'main',
+              workflow_id: 'dispatchci.yml'
+            }
+            console.log(params)
+            result = await github.rest.actions.createWorkflowDispatch(params)
+            console.log(result)
+            
+  comment:
+     runs-on: ubuntu-latest
+     steps:
+#       - uses: actions/github-script@v6
+#         with:
+#           script: |
+#             github.rest.issues.createComment({
+#               issue_number: context.issue.number,
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               body: '👋 Thanks for reporting!'
+#             })
+#             console.log(context.issue)
+            
+      - name: pushes to codecommit
+        env:
+          CODECOMMIT_URL: ${{secrets.CODECOMMIT_URL}}
+        shell: bash
+        run: |
+          echo "$CODECOMMIT_URL"
+          echo  secrets.CODECOMMIT_URL

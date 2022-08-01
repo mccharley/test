@@ -1,0 +1,19 @@
+name: Validate
+
+on: [push]
+
+jobs:
+  validate_images:
+    name: Images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: refs/pull/${{ github.event.number }}/merge
+      - name: Validate images
+        uses: ./.github/workflows/validate
+  validate_manifest:
+    name: Manifest
+    uses: LabyMod/server-media/.github/workflows/validate-manifest@master
+   
