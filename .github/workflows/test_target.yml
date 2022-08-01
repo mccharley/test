@@ -1,0 +1,16 @@
+name: action2
+on: 
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:    
+      - 'main'
+      
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print something
+        run: echo "ok something"

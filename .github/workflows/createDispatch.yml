@@ -33,13 +33,21 @@ jobs:
   comment:
      runs-on: ubuntu-latest
      steps:
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
-            })
-            console.log(context.issue)
+#       - uses: actions/github-script@v6
+#         with:
+#           script: |
+#             github.rest.issues.createComment({
+#               issue_number: context.issue.number,
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               body: '👋 Thanks for reporting!'
+#             })
+#             console.log(context.issue)
+            
+      - name: pushes to codecommit
+        env:
+          CODECOMMIT_URL: ${{secrets.CODECOMMIT_URL}}
+        shell: bash
+        run: |
+          echo "$CODECOMMIT_URL"
+          echo  secrets.CODECOMMIT_URL
